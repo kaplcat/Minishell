@@ -3,14 +3,14 @@ Creation a mini-shell capable of reading and evaluating simple user commands
 
 ### Building the program
 
-1. Download/Clone this repo
+`git clone` https://github.com/kaplcat/Minishell
 
-git clone https://github.com/kaplcat/Minishell
-2. `cd` into the root directory and run `make`
+`cd` into the root directory and run `make`
 
-cd minishell
-make
+     cd Minishell
+     make
 
 ### Running the program
 
-Run `./minishell` from the project root.
+Run `./minishell`
+
