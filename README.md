@@ -7,8 +7,7 @@ Creation a mini-shell capable of reading and evaluating simple user commands
 
 `cd` into the root directory and run `make`
 
-     `git clone` https://github.com/kaplcat/Minishell
-     `cd` Minishell
+     cd Minishell
      make
 
 ## Running the program
