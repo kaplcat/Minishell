@@ -1,7 +1,7 @@
 # Minishell
 Creation a mini-shell capable of reading and evaluating simple user commands
 
-### Building the program
+### *Building the program*
 
 `git clone` https://github.com/kaplcat/Minishell
 
@@ -10,7 +10,6 @@ Creation a mini-shell capable of reading and evaluating simple user commands
      cd Minishell
      make
 
-### Running the program
+### *Running the program*
 
 Run `./minishell`
-
