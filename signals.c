@@ -13,13 +13,12 @@ void print_signal(char *reason, int sig_code)
 	ft_putstr(check_sig_code(sig_code));
 }
 
+
+
 void handler_interrupt(int signal)
 {
-	if (signal == SIGINT)
-	{
-		g_sig = SIGINT;
-		return ;
-	}
+  if (signal == SIGINT)
+    siglongjmp(g_sig, 1);
 }
 
 void signals()

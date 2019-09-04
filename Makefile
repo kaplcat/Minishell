@@ -12,7 +12,8 @@ SRC = absolutepath_launch.c\
 	shell_loop.c\
 	signals.c\
 	split.c\
-	unsetenv.c
+	unsetenv.c\
+	completion.c
 
 OBJ = $(SRC:.c=.o)
 

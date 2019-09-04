@@ -1,3 +1,4 @@
+
 #include "minishell.h"
 
 int execute_cmnd(char **cmnd)
@@ -19,7 +20,6 @@ int execute_cmnd(char **cmnd)
 	return (execute_status);
 }
 
-
 void cmnd_loop()
 {
 	char *line;
@@ -32,17 +32,16 @@ void cmnd_loop()
 	while (status)
 	{
 		signals();
-
 //        ft_putstr(SHELL_NAME);
 //    if ((get_next_line(STDIN_FILENO, &line)))
-
+		rl_attempted_completion_function = cmnd_completion; //WAT
+		while (sigsetjmp(g_sig, 1) != 0)
+		  {
+		    ft_putchar_fd('\n', STDOUT_FILENO);
+		    ;
+		  }
 		if ((line = readline(SHELL_NAME)))
 		{
-			if (g_sig == 2)
-			{
-				status = 1;
-
-			}
 			if ((strrchr(line, ';')))
 			{
 				if (!(args = ft_strsplit(line, ';')))

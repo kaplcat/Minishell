@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-int     loh_strlen(char *s)
+int     env_strlen(char *s)
 {
 	int i;
 
@@ -32,11 +32,11 @@ char	**split(char **str, char *s, char c, int count)
 			{
 				str[n_mas] = ft_strjoin(getenv("HOME"), &s[start] + 1);
 			}
-			else if (s[start] == '$' && loh_strlen(&s[start]) == 1)
+			else if (s[start] == '$' && env_strlen(&s[start]) == 1)
 			{
 				str[n_mas] = ft_strdup("$");
 			}
-			else if (s[start] == '$' && (val = getenv_cmnd(ft_strsub(s, start + 1, loh_strlen(&s[start + 1])))))
+			else if (s[start] == '$' && (val = getenv_cmnd(ft_strsub(s, start + 1, env_strlen(&s[start + 1])))))
 			{
 				str[n_mas] = ft_strdup(val);
 			}

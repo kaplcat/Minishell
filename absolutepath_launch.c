@@ -19,8 +19,8 @@ int launch(char *file, char **args)
 		waitpid(pid, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			waitpid(pid, &status, WUNTRACED);
-		if (WIFSIGNALED(status))
-			print_signal("\nChild term due to", status);
+		//		if (WIFSIGNALED(status))
+		//print_signal("\nChild term due to", status);
 	}
 	return (1); //continue to execute
 }

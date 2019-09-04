@@ -14,7 +14,7 @@
 # include <signal.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-
+# include <setjmp.h>
 /*
  * Error codes
  */
@@ -42,8 +42,7 @@
 
 
 char **g_env;
-int g_sig;
-
+sigjmp_buf g_sig;
 
 int launch(char *file, char **args);
 int		absolute_path_launch(char **cmnd);
@@ -90,5 +89,8 @@ char			**split_cmnd(char const *s, char c);
 void	copy_realloc_del(char **res, char **env, int index);
 char	**realloc_envp_del(int p, char *name, char **env);
 int unsetenv_cmnd(char *name);
+int     env_strlen(char *s);
+char *cmnd_generator(const char *text, int state);
+char **cmnd_completion(const char *text, int start, int end);
 
 #endif
