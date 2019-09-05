@@ -32,10 +32,10 @@ void check_cd(int argc, char **args)
 			return;
 	}
 	else if (!ft_strcmp(args[1], "."))
-		path = getenv("PWD");
+		path = getenv_cmnd("PWD");
 	else if (!ft_strcmp(args[1], "-"))
 	{
-		path = getenv("OLDPWD");
+		path = getenv_cmnd("OLDPWD");
 		ft_putstr_fd(path, STDOUT_FILENO);
 		ft_putchar_fd('\n', STDOUT_FILENO);
 	}

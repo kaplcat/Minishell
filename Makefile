@@ -21,7 +21,7 @@ FLAGS = -Wall -Werror -Wextra
 
 LIBFT = ./libft/libft.a
 
-LIB_INC = ./libft/includes
+LIB_INC = ./libft/libft.h
 
 LIB_DIR = ./libft
 

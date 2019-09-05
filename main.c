@@ -78,15 +78,13 @@ void	print_usage(void)
 
 int main(int argc, char **argv, char **env)
 {
-	char **env_cp;
-
-	env_cp = NULL;
+	//env_cp = NULL;
 	argv = NULL;
 	if (argc == 1)
 	{
-	 env_cp = make_env_cp(env_cp, env);
-	 g_env = env_cp;
-	 cmnd_loop();
+
+        g_env = make_env_cp(g_env, env);
+	    cmnd_loop();
 	///	// exit, cleanup
 	}
 	else

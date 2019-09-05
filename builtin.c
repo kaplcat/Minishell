@@ -28,10 +28,9 @@ int env_cmnd()
 	return (1);  //continue to execute
 }
 
-int exit_cmnd()
-{
-//	clean_env(&env);
-	free_copy_envp(&g_env);
+int exit_cmnd() {
+    clean_env(g_env);
+//	free_copy_envp(&g_env);
 	return (0); // stop to execute
 }
 

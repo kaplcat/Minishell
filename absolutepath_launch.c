@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-int launch(char *file, char **args)
+int launch(char *file, char **args, int absolute)
 {
 	pid_t pid;
 	int status;
@@ -10,6 +10,8 @@ int launch(char *file, char **args)
 	{
 		if (execve(file, args, g_env) == -1) //replace current running process with new one
 			perror_cmnd("minishell", NULL, EXECVEERR);
+		if (!absolute)
+		    free(file);
 		exit(EXIT_FAILURE);
 	}
 	else if (pid < 0) // fork error
@@ -19,9 +21,11 @@ int launch(char *file, char **args)
 		waitpid(pid, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			waitpid(pid, &status, WUNTRACED);
-		//		if (WIFSIGNALED(status))
-		//print_signal("\nChild term due to", status);
+//				if (WIFSIGNALED(status))
+//		print_signal("\nChild term due to", status);
 	}
+	if (!absolute)
+	    free(file);
 	return (1); //continue to execute
 }
 
@@ -35,5 +39,5 @@ int		absolute_path_launch(char **cmnd)
 			perror_cmnd("minishell", cmnd[0], PMDND);
 		return(1);
 	}
-	return (launch(cmnd[0], cmnd));
+	return (launch(cmnd[0], cmnd, 1));
 }

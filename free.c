@@ -1,20 +1,21 @@
 #include "minishell.h"
 
-void clean_env(char ***env_cp)
+void clean_env(char **env_cp)
 {
 	int len;
 	int j;
 
 	j = 0;
 
-	len = str_quantity(g_env);
+	len = str_quantity(env_cp) + 1;
 	while (j < len)
 	{
-		ft_memdel((void**)&(g_env[j]));
+//		ft_memdel((void**)&(env_cp[j]));
+        free(env_cp[j]);
 		j++;
 	}
-	free(*env_cp);
-	*env_cp = NULL;
+	free(env_cp);
+	env_cp = NULL;
 }
 
 void	free_parse(char **parse, int w)

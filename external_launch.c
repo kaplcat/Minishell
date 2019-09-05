@@ -24,7 +24,7 @@ char	*path(char *name, char *path)
 	char	*tmp;
 
 	if (path[ft_strlen(path) - 1] == '/')
-		return (ft_strjoin(path, name));
+        return (ft_strjoin(path, name));
 	else
 	{
 		tmp = ft_strjoin(path, "/");
@@ -34,28 +34,32 @@ char	*path(char *name, char *path)
 	return (full);
 }
 
-
 char		*check_extern_command(char **cmnd)
 {
 	char	*env_path;
 	char	**paths;
 	int		i;
 	int paths_quant;
+	char *path;
 
 	i = 0;
 	paths_quant = 0;
-//    env_path = getenv_cmnd("PATH");
-	if (!(env_path = getenv_cmnd("PATH")))//ok
+	if (!(env_path = getenv_cmnd("PATH")))
 		return (NULL);
-	paths = ft_strsplit(env_path, ':'); // invalid read->count words
+	paths = ft_strsplit(env_path, ':');
 	while (paths[paths_quant])
 		paths_quant++;
-	while (i < paths_quant) //seg
+	while (i < paths_quant)
 	{
 		if ((find_bin(cmnd[0], paths[i])))
-			return (paths[i]);
+        {
+		    path = ft_strdup(paths[i]);
+            clean_env(paths);
+            return (path);
+        }
 		i++;
 	}
+	clean_env(paths);
 	return (NULL);
 }
 
@@ -69,5 +73,7 @@ int external_launch(char **cmnd, char *paths)
 		return (1);
 	}
 	filepath = path(cmnd[0], paths);
-	return (launch(filepath, cmnd));
+	free(paths);
+	//ft_strdel(&paths);
+	return (launch(filepath, cmnd, 0));
 }

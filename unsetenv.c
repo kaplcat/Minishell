@@ -48,7 +48,7 @@ char	**realloc_envp_del(int p, char *name, char **env)
         j++;
         i++;
     }
-    res[i] = NULL;
+    res[p] = NULL;
     copy_realloc_del(res, env, index);
     return (res);
 }
@@ -60,7 +60,7 @@ int unsetenv_cmnd(char *name)
     if (!name)
     {
         ft_putstr("usage: unsetenv [name]\n");
-        return (1); //
+        return (1);
     }
         if (getenv_cmnd(name) != NULL)
         {

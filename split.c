@@ -12,59 +12,45 @@ int     env_strlen(char *s)
 
 char	**split(char **str, char *s, char c, int count)
 {
-	int i;
-	int start;
-	int n_mas;
-	char *val;
+    int i;
+    int start;
+    int n_mas;
+    char *val;
+    char *sub;
 
-
-	i = 0;
-	n_mas = 0;
-	while (s[i] != '\0' && n_mas < count)
-	{
-		if (s[i] != c && s[i] != '\t' && s[i] != '\r' && s[i] != '\v')
-		{
-			start = i;
-
-			while (s[i] != '\0' && s[i] != c)
-				i++;
-			if (s[start] == '~')
-			{
-				str[n_mas] = ft_strjoin(getenv("HOME"), &s[start] + 1);
-			}
-			else if (s[start] == '$' && env_strlen(&s[start]) == 1)
-			{
-				str[n_mas] = ft_strdup("$");
-			}
-			else if (s[start] == '$' && (val = getenv_cmnd(ft_strsub(s, start + 1, env_strlen(&s[start + 1])))))
-			{
-				str[n_mas] = ft_strdup(val);
-			}
-			else if (s[start] == '$' && !val) //
-			{
-				str[n_mas] = ft_strdup(" ");
-			}
-			else
-				str[n_mas] = ft_strsub(s, start, i - start);
-			n_mas++;
-
-
-
-
-
-
-
-//            start = i;
-//            while (s[i] != '\0' && s[i] != c)
-//                i++;
-//            str[n_mas] = ft_strsub(s, start, i - start);
-//            n_mas++;
-		}
-		else
-			i++;
-	}
-	str[n_mas] = NULL;
-	return (str);
+    i = 0;
+    n_mas = 0;
+    while (s[i] != '\0' && n_mas < count) {
+        if (s[i] != c && s[i] != '\t' && s[i] != '\r' && s[i] != '\v' && s[i] != '"')
+        {
+            start = i;
+            while (s[i] != '\0' && s[i] != c && s[i] != '"')
+                i++;
+            sub = ft_strsub(s, start + 1, env_strlen(&s[start + 1]));
+            if (s[start] == '~')
+                str[n_mas] = ft_strjoin(getenv("HOME"), &s[start] + 1);
+            else if (s[start] == '$' && env_strlen(&s[start]) == 1)
+                str[n_mas] = ft_strdup("$");
+            else if (s[start] == '$' && (val = getenv_cmnd(sub)))
+            {
+                str[n_mas] = ft_strdup(val);
+            }
+            else if (s[start] == '$' && !val) //
+                str[n_mas] = ft_strdup(" ");
+            else
+                {
+                free(sub);
+                sub = ft_strsub(s, start, i - start);
+                str[n_mas] = ft_strdup(sub);
+                }
+            free(sub);
+            n_mas++;
+        }
+        else
+            i++;
+    }
+    str[n_mas] = NULL;
+    return (str);
 }
 
 int		count_words(char *str, char sign)

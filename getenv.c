@@ -48,6 +48,17 @@ int checkenv(char *envstr)
 	}
 	return (1);
 }
+
+int getenv_strlen(char *str)
+{
+    int i;
+
+    i = 0;
+    while (str[i] && str[i] != '=')
+        i++;
+    return (i);
+}
+
 char	*getenv_cmnd(char *name)
 {
 	int		i;
@@ -57,7 +68,7 @@ char	*getenv_cmnd(char *name)
 	while (g_env[i])
 	{
 		if ((checkenv(g_env[i])))
-			if ((request = ft_strstr(g_env[i], name)))
+			if ((request = ft_strnstr(g_env[i], name, getenv_strlen(name))))
 				if ((check_existenv(name, request)))
 					return (request + ft_strlen(name) + 1);
 		i++;
