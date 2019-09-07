@@ -18,7 +18,7 @@ char *cmnd_generator(const char *text, int state)
     custom_cmnds[7] = "pwd";
     custom_cmnds[8] = "ls";
     custom_cmnds[9] = "cat";
-    custom_cmnds[11] = NULL;
+    custom_cmnds[10] = NULL;
   if (!state)
     {
       list_index = 0;

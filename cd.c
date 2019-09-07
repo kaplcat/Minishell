@@ -40,33 +40,21 @@ void check_cd(int argc, char **args)
 		ft_putchar_fd('\n', STDOUT_FILENO);
 	}
 	else
-	{
-		if (!ft_strcmp(args[1], " ") && argc == 3)
-			path = args[2];
-		else
-			path = args[1];
-	}
+        (!ft_strcmp(args[1], " ") && argc == 3) ? (path = args[2]) : (path = args[1]);
 	launch_cd(path);
 }
 
-int cd_cmnd(char **args)
+int cd_cmnd(char **args, int argc)
 {
-	int argc;
 	char dir_path[MAXDIR];
 	char *pwd_path;
-
-	argc = 0;
-	while (args[argc])
-		argc++;
 
 	if (argc == 3)
 	{
 		if (!ft_strcmp(args[1], " "))
 			check_cd(argc, args);
-
 		else
 			perror_cmnd("cd", args[1], NOTINPWD); //string not in pwd:
-
 	}
 	else if (argc > 3)
 		perror_cmnd("cd", NULL, MNARGS); //too many arguments

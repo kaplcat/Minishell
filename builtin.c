@@ -54,7 +54,7 @@ int		check_builtin(char *cmnd)
 int builtin(char **args)
 {
 	if (ft_strcmp(args[0], "cd") == 0)
-		return (cd_cmnd(args));
+		return (cd_cmnd(args, str_quantity(args)));
 	if (ft_strcmp(args[0], "env") == 0)
 		return (env_cmnd());
 	if (ft_strcmp(args[0], "setenv") == 0)

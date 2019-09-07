@@ -34,31 +34,26 @@ char	*path(char *name, char *path)
 	return (full);
 }
 
-char		*check_extern_command(char **cmnd)
+char		*check_extern_command(char **cmnd, int i)
 {
 	char	*env_path;
 	char	**paths;
-	int		i;
 	int paths_quant;
 	char *path;
 
-	i = 0;
 	paths_quant = 0;
 	if (!(env_path = getenv_cmnd("PATH")))
 		return (NULL);
 	paths = ft_strsplit(env_path, ':');
 	while (paths[paths_quant])
 		paths_quant++;
-	while (i < paths_quant)
-	{
+	while (++i < paths_quant)
 		if ((find_bin(cmnd[0], paths[i])))
         {
 		    path = ft_strdup(paths[i]);
             clean_env(paths);
             return (path);
         }
-		i++;
-	}
 	clean_env(paths);
 	return (NULL);
 }
@@ -74,6 +69,5 @@ int external_launch(char **cmnd, char *paths)
 	}
 	filepath = path(cmnd[0], paths);
 	free(paths);
-	//ft_strdel(&paths);
 	return (launch(filepath, cmnd, 0));
 }

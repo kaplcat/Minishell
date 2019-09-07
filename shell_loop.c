@@ -95,11 +95,51 @@ int execute_cmnd(char **cmnd)
 		execute_status = absolute_path_launch(cmnd);
 	else if (check_builtin(cmnd[0]) == 1)
 		execute_status = builtin(cmnd);
-	else if ((path = check_extern_command(cmnd)))
+	else if ((path = check_extern_command(cmnd, -1)))
 		execute_status = external_launch(cmnd, path);
 	else
 		perror_cmnd("minishell", cmnd[0], CMNDNTFND);
 	return (execute_status);
+}
+
+
+
+
+int exe_multcmnds(char *line)
+{
+    int i;
+    char **args;
+    char **mult_args;
+    int status;
+
+    status = 0;
+    if (!(args = ft_strsplit(line, ';')))
+    perror_cmnd("minishell", NULL, MLKERR);
+    i = -1;
+    while (args[++i])
+    {
+        mult_args = split_cmnd(args[i], ' ');
+        status = execute_cmnd(mult_args);
+        clean_env(mult_args);
+        if (status == 0)
+        {
+            clean_env(args);
+            break;
+        }
+    }
+    clean_env(args);
+    return (status);
+}
+
+int exe_cmnds(char *line)
+{
+    char **args;
+    int status;
+
+    args = split_cmnd(line, ' ');
+    status = execute_cmnd(args);
+    clean_env(args);
+    return (status);
 }
 
 void cmnd_loop()
@@ -107,10 +147,7 @@ void cmnd_loop()
 	char *line;
 	char **args;
 	int status;
-	int i;
-	char **mult_args;
 
-	args = NULL;
 	status = 1;
 	while (status)
 	{
@@ -123,30 +160,9 @@ void cmnd_loop()
 		if ((line = readline(SHELL_NAME)))
 		{
 			if ((strrchr(line, ';')))
-			{
-				if (!(args = ft_strsplit(line, ';')))
-					perror_cmnd("minishell", NULL, MLKERR);
-				i = 0;
-				while (args[i])
-				{
-				    mult_args = split_cmnd(args[i], ' ');
-					status = execute_cmnd(mult_args);
-                    clean_env(mult_args);
-					if (status == 0)
-                    {
-                        clean_env(args);
-                        break ;
-                    }
-					i++;
-				}
-                clean_env(args);
-			}
+				status = exe_multcmnds(line);
 			else
-			{
-				args = split_cmnd(line, ' ');
-				status = execute_cmnd(args);
-                clean_env(args);
-			}
+			    status = exe_cmnds(line);
 			add_history(line);
 			free(line);
 		}
