@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cd.c                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bellyn-t <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/07 20:57:38 by bellyn-t          #+#    #+#             */
+/*   Updated: 2019/09/07 21:07:29 by bellyn-t         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-void launch_cd(char *path)
+void	launch_cd(char *path)
 {
 	struct stat s;
 
@@ -15,21 +27,30 @@ void launch_cd(char *path)
 		else if (access(path, R_OK))
 			perror_cmnd("minishell", path, 0);
 		else
-		if (chdir(path) == -1)
-			perror_cmnd("cd", path, CHDIRERR);
+		{
+			if (chdir(path) == -1)
+				perror_cmnd("cd", path, CHDIRERR);
+		}
 	}
 	else
 		perror_cmnd("cd", path, NOFLODIR);
 }
 
-void check_cd(int argc, char **args)
+char	*get_true_path(int argc, char **args)
+{
+	if (!ft_strcmp(args[1], " ") && argc == 3)
+		return (args[2]);
+	return (args[1]);
+}
+
+void	check_cd(int argc, char **args)
 {
 	char *path;
 
 	if (argc == 1 || !ft_strcmp(args[1], "--") || !ft_strcmp(args[1], "~"))
 	{
 		if (!(path = getenv_cmnd("HOME")))
-			return;
+			return ;
 	}
 	else if (!ft_strcmp(args[1], "."))
 		path = getenv_cmnd("PWD");
@@ -40,11 +61,11 @@ void check_cd(int argc, char **args)
 		ft_putchar_fd('\n', STDOUT_FILENO);
 	}
 	else
-        (!ft_strcmp(args[1], " ") && argc == 3) ? (path = args[2]) : (path = args[1]);
+		path = get_true_path(argc, args);
 	launch_cd(path);
 }
 
-int cd_cmnd(char **args, int argc)
+int		cd_cmnd(char **args, int argc)
 {
 	char dir_path[MAXDIR];
 	char *pwd_path;
@@ -54,10 +75,10 @@ int cd_cmnd(char **args, int argc)
 		if (!ft_strcmp(args[1], " "))
 			check_cd(argc, args);
 		else
-			perror_cmnd("cd", args[1], NOTINPWD); //string not in pwd:
+			perror_cmnd("cd", args[1], NOTINPWD);
 	}
 	else if (argc > 3)
-		perror_cmnd("cd", NULL, MNARGS); //too many arguments
+		perror_cmnd("cd", NULL, MNARGS);
 	else
 		check_cd(argc, args);
 	if (!(getcwd(dir_path, MAXDIR)))
@@ -67,5 +88,5 @@ int cd_cmnd(char **args, int argc)
 		setenv_cmnd("OLDPWD", pwd_path);
 		setenv_cmnd("PWD", dir_path);
 	}
-	return (1); // continue to execute
+	return (1);
 }

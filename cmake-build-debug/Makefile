@@ -285,6 +285,33 @@ error.c.s:
 	$(MAKE) -f CMakeFiles/minibelly.dir/build.make CMakeFiles/minibelly.dir/error.c.s
 .PHONY : error.c.s
 
+execution.o: execution.c.o
+
+.PHONY : execution.o
+
+# target to build an object file
+execution.c.o:
+	$(MAKE) -f CMakeFiles/minibelly.dir/build.make CMakeFiles/minibelly.dir/execution.c.o
+.PHONY : execution.c.o
+
+execution.i: execution.c.i
+
+.PHONY : execution.i
+
+# target to preprocess a source file
+execution.c.i:
+	$(MAKE) -f CMakeFiles/minibelly.dir/build.make CMakeFiles/minibelly.dir/execution.c.i
+.PHONY : execution.c.i
+
+execution.s: execution.c.s
+
+.PHONY : execution.s
+
+# target to generate assembly for a file
+execution.c.s:
+	$(MAKE) -f CMakeFiles/minibelly.dir/build.make CMakeFiles/minibelly.dir/execution.c.s
+.PHONY : execution.c.s
+
 external_launch.o: external_launch.c.o
 
 .PHONY : external_launch.o
@@ -2256,6 +2283,9 @@ help:
 	@echo "... error.o"
 	@echo "... error.i"
 	@echo "... error.s"
+	@echo "... execution.o"
+	@echo "... execution.i"
+	@echo "... execution.s"
 	@echo "... external_launch.o"
 	@echo "... external_launch.i"
 	@echo "... external_launch.s"

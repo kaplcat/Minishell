@@ -14,8 +14,6 @@ CMakeFiles/minibelly.dir/cd.c.o: ../libft/libft.h
 CMakeFiles/minibelly.dir/cd.c.o: ../minishell.h
 
 CMakeFiles/minibelly.dir/completion.c.o: ../completion.c
-CMakeFiles/minibelly.dir/completion.c.o: ../libft/libft.h
-CMakeFiles/minibelly.dir/completion.c.o: ../minishell.h
 
 CMakeFiles/minibelly.dir/echo.c.o: ../echo.c
 CMakeFiles/minibelly.dir/echo.c.o: ../libft/libft.h
@@ -24,6 +22,10 @@ CMakeFiles/minibelly.dir/echo.c.o: ../minishell.h
 CMakeFiles/minibelly.dir/error.c.o: ../error.c
 CMakeFiles/minibelly.dir/error.c.o: ../libft/libft.h
 CMakeFiles/minibelly.dir/error.c.o: ../minishell.h
+
+CMakeFiles/minibelly.dir/execution.c.o: ../execution.c
+CMakeFiles/minibelly.dir/execution.c.o: ../libft/libft.h
+CMakeFiles/minibelly.dir/execution.c.o: ../minishell.h
 
 CMakeFiles/minibelly.dir/external_launch.c.o: ../external_launch.c
 CMakeFiles/minibelly.dir/external_launch.c.o: ../libft/libft.h

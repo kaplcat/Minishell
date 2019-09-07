@@ -68,6 +68,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/minibelly.dir/completion.c.o"
   "CMakeFiles/minibelly.dir/echo.c.o"
   "CMakeFiles/minibelly.dir/error.c.o"
+  "CMakeFiles/minibelly.dir/execution.c.o"
   "CMakeFiles/minibelly.dir/external_launch.c.o"
   "CMakeFiles/minibelly.dir/free.c.o"
   "CMakeFiles/minibelly.dir/getenv.c.o"

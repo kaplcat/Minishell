@@ -1,12 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   completion.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bellyn-t <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/07 21:11:34 by bellyn-t          #+#    #+#             */
+/*   Updated: 2019/09/07 21:11:37 by bellyn-t         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-
-char *cmnd_generator(const char *text, int state)
+char	*cmnd_generator(const char *text, int state)
 {
-  static int list_index;
-  static size_t len;
-  char *name;
-  char *custom_cmnds[12];
+    static	int		list_index;
+    static	size_t	len;
+    char			*name;
+    char			*custom_cmnds[11];
 
     custom_cmnds[0] = "echo";
     custom_cmnds[1] = "emacs";
@@ -16,24 +27,23 @@ char *cmnd_generator(const char *text, int state)
     custom_cmnds[5] = "unsetenv";
     custom_cmnds[6] = "env";
     custom_cmnds[7] = "pwd";
-    custom_cmnds[8] = "ls";
-    custom_cmnds[9] = "cat";
-    custom_cmnds[10] = NULL;
-  if (!state)
+    custom_cmnds[8] = "cat";
+    custom_cmnds[9] = NULL;
+    if (!state)
     {
-      list_index = 0;
-      len = ft_strlen(text);
+        list_index = 0;
+        len = ft_strlen(text);
     }
-  while ((name = custom_cmnds[list_index++]))
-      if (ft_strncmp(name, text, len) == 0)
-	    return (ft_strdup(name));
-  return NULL;
+    while ((name = custom_cmnds[list_index++]))
+        if (ft_strncmp(name, text, len) == 0)
+            return (ft_strdup(name));
+    return (NULL);
 }
 
-char **cmnd_completion(const char *text, int start, int end)
+char	**cmnd_completion(const char *text, int start, int end)
 {
-  rl_attempted_completion_over = 1;
-  start = 0;
-  end = 0;
-  return (rl_completion_matches(text, cmnd_generator));
+    rl_attempted_completion_over = 1;
+    start = 0;
+    end = 0;
+    return (rl_completion_matches(text, cmnd_generator));
 }

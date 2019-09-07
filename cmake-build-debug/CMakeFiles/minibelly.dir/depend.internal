@@ -15,14 +15,16 @@ CMakeFiles/minibelly.dir/cd.c.o
  /Users/bellyn-t/Desktop/minibelly/minishell.h
 CMakeFiles/minibelly.dir/completion.c.o
  /Users/bellyn-t/Desktop/minibelly/completion.c
- /Users/bellyn-t/Desktop/minibelly/libft/libft.h
- /Users/bellyn-t/Desktop/minibelly/minishell.h
 CMakeFiles/minibelly.dir/echo.c.o
  /Users/bellyn-t/Desktop/minibelly/echo.c
  /Users/bellyn-t/Desktop/minibelly/libft/libft.h
  /Users/bellyn-t/Desktop/minibelly/minishell.h
 CMakeFiles/minibelly.dir/error.c.o
  /Users/bellyn-t/Desktop/minibelly/error.c
+ /Users/bellyn-t/Desktop/minibelly/libft/libft.h
+ /Users/bellyn-t/Desktop/minibelly/minishell.h
+CMakeFiles/minibelly.dir/execution.c.o
+ /Users/bellyn-t/Desktop/minibelly/execution.c
  /Users/bellyn-t/Desktop/minibelly/libft/libft.h
  /Users/bellyn-t/Desktop/minibelly/minishell.h
 CMakeFiles/minibelly.dir/external_launch.c.o

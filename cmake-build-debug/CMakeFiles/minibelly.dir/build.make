@@ -954,9 +954,22 @@ CMakeFiles/minibelly.dir/error.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/minibelly.dir/error.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/bellyn-t/Desktop/minibelly/error.c -o CMakeFiles/minibelly.dir/error.c.s
 
+CMakeFiles/minibelly.dir/execution.c.o: CMakeFiles/minibelly.dir/flags.make
+CMakeFiles/minibelly.dir/execution.c.o: ../execution.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bellyn-t/Desktop/minibelly/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/minibelly.dir/execution.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minibelly.dir/execution.c.o   -c /Users/bellyn-t/Desktop/minibelly/execution.c
+
+CMakeFiles/minibelly.dir/execution.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/minibelly.dir/execution.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/bellyn-t/Desktop/minibelly/execution.c > CMakeFiles/minibelly.dir/execution.c.i
+
+CMakeFiles/minibelly.dir/execution.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/minibelly.dir/execution.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/bellyn-t/Desktop/minibelly/execution.c -o CMakeFiles/minibelly.dir/execution.c.s
+
 CMakeFiles/minibelly.dir/external_launch.c.o: CMakeFiles/minibelly.dir/flags.make
 CMakeFiles/minibelly.dir/external_launch.c.o: ../external_launch.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bellyn-t/Desktop/minibelly/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/minibelly.dir/external_launch.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bellyn-t/Desktop/minibelly/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/minibelly.dir/external_launch.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minibelly.dir/external_launch.c.o   -c /Users/bellyn-t/Desktop/minibelly/external_launch.c
 
 CMakeFiles/minibelly.dir/external_launch.c.i: cmake_force
@@ -969,7 +982,7 @@ CMakeFiles/minibelly.dir/external_launch.c.s: cmake_force
 
 CMakeFiles/minibelly.dir/free.c.o: CMakeFiles/minibelly.dir/flags.make
 CMakeFiles/minibelly.dir/free.c.o: ../free.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bellyn-t/Desktop/minibelly/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/minibelly.dir/free.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bellyn-t/Desktop/minibelly/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/minibelly.dir/free.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minibelly.dir/free.c.o   -c /Users/bellyn-t/Desktop/minibelly/free.c
 
 CMakeFiles/minibelly.dir/free.c.i: cmake_force
@@ -982,7 +995,7 @@ CMakeFiles/minibelly.dir/free.c.s: cmake_force
 
 CMakeFiles/minibelly.dir/getenv.c.o: CMakeFiles/minibelly.dir/flags.make
 CMakeFiles/minibelly.dir/getenv.c.o: ../getenv.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bellyn-t/Desktop/minibelly/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/minibelly.dir/getenv.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bellyn-t/Desktop/minibelly/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/minibelly.dir/getenv.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minibelly.dir/getenv.c.o   -c /Users/bellyn-t/Desktop/minibelly/getenv.c
 
 CMakeFiles/minibelly.dir/getenv.c.i: cmake_force
@@ -995,7 +1008,7 @@ CMakeFiles/minibelly.dir/getenv.c.s: cmake_force
 
 CMakeFiles/minibelly.dir/main.c.o: CMakeFiles/minibelly.dir/flags.make
 CMakeFiles/minibelly.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bellyn-t/Desktop/minibelly/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/minibelly.dir/main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bellyn-t/Desktop/minibelly/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/minibelly.dir/main.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minibelly.dir/main.c.o   -c /Users/bellyn-t/Desktop/minibelly/main.c
 
 CMakeFiles/minibelly.dir/main.c.i: cmake_force
@@ -1008,7 +1021,7 @@ CMakeFiles/minibelly.dir/main.c.s: cmake_force
 
 CMakeFiles/minibelly.dir/setenv.c.o: CMakeFiles/minibelly.dir/flags.make
 CMakeFiles/minibelly.dir/setenv.c.o: ../setenv.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bellyn-t/Desktop/minibelly/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/minibelly.dir/setenv.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bellyn-t/Desktop/minibelly/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/minibelly.dir/setenv.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minibelly.dir/setenv.c.o   -c /Users/bellyn-t/Desktop/minibelly/setenv.c
 
 CMakeFiles/minibelly.dir/setenv.c.i: cmake_force
@@ -1021,7 +1034,7 @@ CMakeFiles/minibelly.dir/setenv.c.s: cmake_force
 
 CMakeFiles/minibelly.dir/shell_loop.c.o: CMakeFiles/minibelly.dir/flags.make
 CMakeFiles/minibelly.dir/shell_loop.c.o: ../shell_loop.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bellyn-t/Desktop/minibelly/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/minibelly.dir/shell_loop.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bellyn-t/Desktop/minibelly/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/minibelly.dir/shell_loop.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minibelly.dir/shell_loop.c.o   -c /Users/bellyn-t/Desktop/minibelly/shell_loop.c
 
 CMakeFiles/minibelly.dir/shell_loop.c.i: cmake_force
@@ -1034,7 +1047,7 @@ CMakeFiles/minibelly.dir/shell_loop.c.s: cmake_force
 
 CMakeFiles/minibelly.dir/signals.c.o: CMakeFiles/minibelly.dir/flags.make
 CMakeFiles/minibelly.dir/signals.c.o: ../signals.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bellyn-t/Desktop/minibelly/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/minibelly.dir/signals.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bellyn-t/Desktop/minibelly/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/minibelly.dir/signals.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minibelly.dir/signals.c.o   -c /Users/bellyn-t/Desktop/minibelly/signals.c
 
 CMakeFiles/minibelly.dir/signals.c.i: cmake_force
@@ -1047,7 +1060,7 @@ CMakeFiles/minibelly.dir/signals.c.s: cmake_force
 
 CMakeFiles/minibelly.dir/split.c.o: CMakeFiles/minibelly.dir/flags.make
 CMakeFiles/minibelly.dir/split.c.o: ../split.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bellyn-t/Desktop/minibelly/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/minibelly.dir/split.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bellyn-t/Desktop/minibelly/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/minibelly.dir/split.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minibelly.dir/split.c.o   -c /Users/bellyn-t/Desktop/minibelly/split.c
 
 CMakeFiles/minibelly.dir/split.c.i: cmake_force
@@ -1060,7 +1073,7 @@ CMakeFiles/minibelly.dir/split.c.s: cmake_force
 
 CMakeFiles/minibelly.dir/unsetenv.c.o: CMakeFiles/minibelly.dir/flags.make
 CMakeFiles/minibelly.dir/unsetenv.c.o: ../unsetenv.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bellyn-t/Desktop/minibelly/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/minibelly.dir/unsetenv.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bellyn-t/Desktop/minibelly/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/minibelly.dir/unsetenv.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/minibelly.dir/unsetenv.c.o   -c /Users/bellyn-t/Desktop/minibelly/unsetenv.c
 
 CMakeFiles/minibelly.dir/unsetenv.c.i: cmake_force
@@ -1142,6 +1155,7 @@ minibelly_OBJECTS = \
 "CMakeFiles/minibelly.dir/completion.c.o" \
 "CMakeFiles/minibelly.dir/echo.c.o" \
 "CMakeFiles/minibelly.dir/error.c.o" \
+"CMakeFiles/minibelly.dir/execution.c.o" \
 "CMakeFiles/minibelly.dir/external_launch.c.o" \
 "CMakeFiles/minibelly.dir/free.c.o" \
 "CMakeFiles/minibelly.dir/getenv.c.o" \
@@ -1224,6 +1238,7 @@ minibelly: CMakeFiles/minibelly.dir/cd.c.o
 minibelly: CMakeFiles/minibelly.dir/completion.c.o
 minibelly: CMakeFiles/minibelly.dir/echo.c.o
 minibelly: CMakeFiles/minibelly.dir/error.c.o
+minibelly: CMakeFiles/minibelly.dir/execution.c.o
 minibelly: CMakeFiles/minibelly.dir/external_launch.c.o
 minibelly: CMakeFiles/minibelly.dir/free.c.o
 minibelly: CMakeFiles/minibelly.dir/getenv.c.o
@@ -1235,7 +1250,7 @@ minibelly: CMakeFiles/minibelly.dir/split.c.o
 minibelly: CMakeFiles/minibelly.dir/unsetenv.c.o
 minibelly: CMakeFiles/minibelly.dir/build.make
 minibelly: CMakeFiles/minibelly.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/bellyn-t/Desktop/minibelly/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Linking C executable minibelly"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/bellyn-t/Desktop/minibelly/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Linking C executable minibelly"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/minibelly.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

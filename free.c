@@ -1,17 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bellyn-t <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/07 21:13:31 by bellyn-t          #+#    #+#             */
+/*   Updated: 2019/09/07 21:13:34 by bellyn-t         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-void clean_env(char **env_cp)
+void	clean_env(char **env_cp)
 {
 	int len;
 	int j;
 
 	j = 0;
-
 	len = str_quantity(env_cp) + 1;
 	while (j < len)
 	{
-//		ft_memdel((void**)&(env_cp[j]));
-        free(env_cp[j]);
+		free(env_cp[j]);
 		j++;
 	}
 	free(env_cp);

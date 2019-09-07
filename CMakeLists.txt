@@ -77,6 +77,7 @@ add_executable(minibelly
         completion.c
         echo.c
         error.c
+        execution.c
         external_launch.c
         free.c
         getenv.c

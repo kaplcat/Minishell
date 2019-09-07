@@ -1,15 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   getenv.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bellyn-t <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/07 21:13:53 by bellyn-t          #+#    #+#             */
+/*   Updated: 2019/09/07 21:16:11 by bellyn-t         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
-
-
-int		str_quantity(char **env) //поменять
-{
-	int i;
-
-	i = 0;
-	while (env[i])
-		i++;
-	return (i);
-}
 
 int		check_existenv(const char *name, char *request)
 {
@@ -39,7 +40,7 @@ int		get_envindex(const char *name)
 	return (-1);
 }
 
-int checkenv(char *envstr)
+int		checkenv(char *envstr)
 {
 	if (!(ft_strchr(envstr, '=')))
 	{
@@ -49,14 +50,14 @@ int checkenv(char *envstr)
 	return (1);
 }
 
-int getenv_strlen(char *str)
+int		getenv_strlen(char *str)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (str[i] && str[i] != '=')
-        i++;
-    return (i);
+	i = 0;
+	while (str[i] && str[i] != '=')
+		i++;
+	return (i);
 }
 
 char	*getenv_cmnd(char *name)

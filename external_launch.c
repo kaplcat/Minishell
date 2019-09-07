@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   external_launch.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bellyn-t <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/07 21:13:11 by bellyn-t          #+#    #+#             */
+/*   Updated: 2019/09/07 21:13:14 by bellyn-t         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-int		find_bin(char *cmnd_name, char *path)
+int			find_bin(char *cmnd_name, char *path)
 {
 	DIR				*dir;
 	struct dirent	*dir_ptr;
@@ -18,13 +30,13 @@ int		find_bin(char *cmnd_name, char *path)
 	return (0);
 }
 
-char	*path(char *name, char *path)
+char		*path(char *name, char *path)
 {
 	char	*full;
 	char	*tmp;
 
 	if (path[ft_strlen(path) - 1] == '/')
-        return (ft_strjoin(path, name));
+		return (ft_strjoin(path, name));
 	else
 	{
 		tmp = ft_strjoin(path, "/");
@@ -38,8 +50,8 @@ char		*check_extern_command(char **cmnd, int i)
 {
 	char	*env_path;
 	char	**paths;
-	int paths_quant;
-	char *path;
+	int		paths_quant;
+	char	*path;
 
 	paths_quant = 0;
 	if (!(env_path = getenv_cmnd("PATH")))
@@ -49,20 +61,20 @@ char		*check_extern_command(char **cmnd, int i)
 		paths_quant++;
 	while (++i < paths_quant)
 		if ((find_bin(cmnd[0], paths[i])))
-        {
-		    path = ft_strdup(paths[i]);
-            clean_env(paths);
-            return (path);
-        }
+		{
+			path = ft_strdup(paths[i]);
+			clean_env(paths);
+			return (path);
+		}
 	clean_env(paths);
 	return (NULL);
 }
 
-int external_launch(char **cmnd, char *paths)
+int			external_launch(char **cmnd, char *paths)
 {
 	char *filepath;
 
-	if (!access(cmnd[0], R_OK)) // check //X_OK??
+	if (!access(cmnd[0], R_OK))
 	{
 		perror_cmnd("minishell", cmnd[0], 0);
 		return (1);

@@ -102,6 +102,9 @@
 		<Unit filename="/Users/bellyn-t/Desktop/minibelly/error.c">
 			<Option target="minibelly"/>
 		</Unit>
+		<Unit filename="/Users/bellyn-t/Desktop/minibelly/execution.c">
+			<Option target="minibelly"/>
+		</Unit>
 		<Unit filename="/Users/bellyn-t/Desktop/minibelly/external_launch.c">
 			<Option target="minibelly"/>
 		</Unit>

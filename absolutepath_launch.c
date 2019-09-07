@@ -1,32 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   absolutepath_launch.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bellyn-t <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/07 21:10:26 by bellyn-t          #+#    #+#             */
+/*   Updated: 2019/09/07 21:10:28 by bellyn-t         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-int launch(char *file, char **args, int absolute)
+int		launch(char *file, char **args, int absolute)
 {
-	pid_t pid;
-	int status;
+	pid_t	pid;
+	int		status;
 
-	pid = fork(); // make copy of process (child)
-	if (pid == 0) // child process
+	pid = fork();
+	if (pid == 0)
 	{
-		if (execve(file, args, g_env) == -1) //replace current running process with new one
+		if (execve(file, args, g_env) == -1)
 			perror_cmnd("minishell", NULL, EXECVEERR);
 		if (!absolute)
-		    free(file);
+			free(file);
 		exit(EXIT_FAILURE);
 	}
-	else if (pid < 0) // fork error
+	else if (pid < 0)
 		perror_cmnd("minishell", NULL, FORKERR);
-	else // parent process
+	else
 	{
 		waitpid(pid, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			waitpid(pid, &status, WUNTRACED);
-//				if (WIFSIGNALED(status))
-//		print_signal("\nChild term due to", status);
 	}
 	if (!absolute)
-	    free(file);
-	return (1); //continue to execute
+		free(file);
+	return (1);
 }
 
 int		absolute_path_launch(char **cmnd)
@@ -37,7 +47,7 @@ int		absolute_path_launch(char **cmnd)
 			perror_cmnd("minishell", cmnd[0], CMNDNTFND);
 		else
 			perror_cmnd("minishell", cmnd[0], PMDND);
-		return(1);
+		return (1);
 	}
 	return (launch(cmnd[0], cmnd, 1));
 }
