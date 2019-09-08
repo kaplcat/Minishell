@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bellyn-t <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/07 20:57:38 by bellyn-t          #+#    #+#             */
-/*   Updated: 2019/09/07 21:07:29 by bellyn-t         ###   ########.fr       */
+/*   Created: 2019/09/08 16:17:33 by bellyn-t          #+#    #+#             */
+/*   Updated: 2019/09/08 16:18:39 by bellyn-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void	check_cd(int argc, char **args, int cwderr)
 {
 	char *path;
 
-	if (argc == 1 || !ft_strcmp(args[1], "--") || !ft_strcmp(args[1], "~") || cwderr)
+	if (argc == 1 || !ft_strcmp(args[1], "--") ||
+		!ft_strcmp(args[1], "~") || cwderr)
 	{
 		if (!(path = getenv_cmnd("HOME")))
 			return ;
@@ -65,38 +66,34 @@ void	check_cd(int argc, char **args, int cwderr)
 	launch_cd(path);
 }
 
+void	cd_three_args(char **args, int argc)
+{
+	if (!ft_strcmp(args[1], " "))
+		check_cd(argc, args, 0);
+	else
+		perror_cmnd("cd", args[1], NOTINPWD);
+}
+
 int		cd_cmnd(char **args, int argc)
 {
-	char dir_path[MAXDIR];
-	char *pwd_path;
-	int cwderr;
+	char	dir_path[MAXDIR];
+	char	*pwd_path;
+	int		cwderr;
 
 	cwderr = 0;
 	if (argc == 3)
-	{
-		if (!ft_strcmp(args[1], " "))
-			check_cd(argc, args, cwderr);
-		else
-			perror_cmnd("cd", args[1], NOTINPWD);
-	}
+		cd_three_args(args, argc);
 	else if (argc > 3)
 		perror_cmnd("cd", NULL, MNARGS);
 	else
-    {
-        if (!(getcwd(dir_path, MAXDIR)))
-        {
-            perror_cmnd("cd", args[1], GETCWDERR);
-            cwderr = 1;
-//            return (1);
-        }
-        check_cd(argc, args, cwderr);
-    }
-//		check_cd(argc, args);
-//	if (!(getcwd(dir_path, MAXDIR)))
-//    {
-//        perror_cmnd("cd", args[1], GETCWDERR);
-//
-//    }
+	{
+		if (!(getcwd(dir_path, MAXDIR)))
+		{
+			perror_cmnd("cd", args[1], GETCWDERR);
+			cwderr = 1;
+		}
+		check_cd(argc, args, cwderr);
+	}
 	if ((pwd_path = getenv_cmnd("PWD")))
 	{
 		setenv_cmnd("OLDPWD", pwd_path);

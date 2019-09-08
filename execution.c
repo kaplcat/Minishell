@@ -38,7 +38,7 @@ int		exe_multcmnds(char *line)
 	char	**mult_args;
 	int		status;
 
-	status = 0;
+	status = 1;
 	if (!(args = ft_strsplit(line, ';')))
 		perror_cmnd("minishell", NULL, MLKERR);
 	i = -1;
@@ -48,10 +48,7 @@ int		exe_multcmnds(char *line)
 		status = execute_cmnd(mult_args);
 		clean_env(mult_args);
 		if (status == 0)
-		{
-			clean_env(args);
 			break ;
-		}
 	}
 	clean_env(args);
 	return (status);

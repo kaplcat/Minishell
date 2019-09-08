@@ -6,7 +6,7 @@
 /*   By: bellyn-t <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 21:40:47 by bellyn-t          #+#    #+#             */
-/*   Updated: 2019/09/08 13:49:04 by bellyn-t         ###   ########.fr       */
+/*   Updated: 2019/09/08 16:09:25 by bellyn-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 
 # define MAXDIR 4095
 
-# define SHELL_NAME "\e[95m\e[1mminishell\e[0m🌚 "
+# define SHELL_NAME "\e[95m\e[1mminishell\e[0m🌚  "
 
 char		**g_env;
 sigjmp_buf	g_sig;
@@ -58,7 +58,6 @@ int		exit_cmnd(void);
 int		check_builtin(char *cmnd);
 int		builtin(char **args);
 void	launch_cd(char *path);
-//void	check_cd(int argc, char **args);
 int		cd_cmnd(char **args, int argc);
 int		echo_cmnd(char **args);
 char	*check_error_code(int error_code);

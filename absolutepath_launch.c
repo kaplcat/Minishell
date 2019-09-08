@@ -6,7 +6,7 @@
 /*   By: bellyn-t <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 21:10:26 by bellyn-t          #+#    #+#             */
-/*   Updated: 2019/09/07 21:10:28 by bellyn-t         ###   ########.fr       */
+/*   Updated: 2019/09/08 16:10:35 by bellyn-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int		launch(char *file, char **args, int absolute)
 	pid = fork();
 	if (pid == 0)
 	{
-	    if (execve(file, args, g_env) == -1 && !access(file, X_OK))
-            perror_cmnd("minishell", file, PMDND);
+		if (execve(file, args, g_env) == -1 && !access(file, X_OK))
+			perror_cmnd("minishell", file, PMDND);
 		else if (execve(file, args, g_env) == -1)
 			perror_cmnd("minishell", NULL, EXECVEERR);
 		if (!absolute)
