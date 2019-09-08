@@ -6,16 +6,16 @@
 /*   By: bellyn-t <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 21:14:18 by bellyn-t          #+#    #+#             */
-/*   Updated: 2019/09/07 21:14:36 by bellyn-t         ###   ########.fr       */
+/*   Updated: 2019/09/08 13:51:30 by bellyn-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	 execute_cmnd(char **cmnd)
+int		execute_cmnd(char **cmnd)
 {
-	int execute_status;
-	char *path;
+	int		execute_status;
+	char	*path;
 
 	execute_status = 1;
 	if (cmnd[0] == NULL)
@@ -31,16 +31,16 @@ int	 execute_cmnd(char **cmnd)
 	return (execute_status);
 }
 
-int	 exe_multcmnds(char *line)
+int		exe_multcmnds(char *line)
 {
-	int i;
-	char **args;
-	char **mult_args;
-	int status;
+	int		i;
+	char	**args;
+	char	**mult_args;
+	int		status;
 
 	status = 0;
 	if (!(args = ft_strsplit(line, ';')))
-	    perror_cmnd("minishell", NULL, MLKERR);
+		perror_cmnd("minishell", NULL, MLKERR);
 	i = -1;
 	while (args[++i])
 	{
@@ -50,17 +50,17 @@ int	 exe_multcmnds(char *line)
 		if (status == 0)
 		{
 			clean_env(args);
-			break;
+			break ;
 		}
 	}
 	clean_env(args);
 	return (status);
 }
 
-int	 exe_cmnds(char *line)
+int		exe_cmnds(char *line)
 {
-	char **args;
-	int status;
+	char	**args;
+	int		status;
 
 	args = split_cmnd(line, ' ');
 	status = execute_cmnd(args);
@@ -68,7 +68,7 @@ int	 exe_cmnds(char *line)
 	return (status);
 }
 
-int	 execution(char *line)
+int		execution(char *line)
 {
 	int status;
 

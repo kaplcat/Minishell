@@ -6,7 +6,7 @@
 /*   By: bellyn-t <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 21:40:47 by bellyn-t          #+#    #+#             */
-/*   Updated: 2019/09/07 21:44:55 by bellyn-t         ###   ########.fr       */
+/*   Updated: 2019/09/08 13:49:04 by bellyn-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,9 @@ char	*cmnd_generator(const char *text, int state);
 char	**cmnd_completion(const char *text, int start, int end);
 int		getenv_strlen(char *str);
 char	*malloc_line(char *name, char *value);
-int	    execute_cmnd(char **cmnd);
-int     exe_multcmnds(char *line);
-int     exe_cmnds(char *line);
-int     execution(char *line);
+int		execute_cmnd(char **cmnd);
+int		exe_multcmnds(char *line);
+int		exe_cmnds(char *line);
+int		execution(char *line);
 
 #endif

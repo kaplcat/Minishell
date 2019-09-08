@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   split.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bellyn-t <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/08 13:44:34 by bellyn-t          #+#    #+#             */
+/*   Updated: 2019/09/08 13:45:29 by bellyn-t         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-int	    env_strlen(char *s)
+int		env_strlen(char *s)
 {
 	int i;
 
@@ -10,38 +22,48 @@ int	    env_strlen(char *s)
 	return (i);
 }
 
-char    **split(char **str, char *s, char c, int count)
+char	*nsplit(char *s, int start, int i, char *sub)
 {
-	int i;
-	int start;
-	int n_mas;
 	char *val;
-	char *sub;
+	char *dupsub;
+	char *str;
+
+	if (s[start] == '~')
+		return (ft_strjoin(getenv("HOME"), &s[start] + 1));
+	else if (s[start] == '$' && env_strlen(&s[start]) == 1)
+		return (ft_strdup("$"));
+	else if (s[start] == '$' && (val = getenv_cmnd(sub)))
+		return (ft_strdup(val));
+	else if (s[start] == '$' && !val)
+		return (ft_strdup(" "));
+	else
+	{
+		dupsub = ft_strsub(s, start, i - start);
+		str = ft_strdup(dupsub);
+		free(dupsub);
+	}
+	return (str);
+}
+
+char	**split(char **str, char *s, char c, int count)
+{
+	int		i;
+	int		start;
+	int		n_mas;
+	char	*sub;
 
 	i = 0;
 	n_mas = 0;
-	while (s[i] != '\0' && n_mas < count) {
-		if (s[i] != c && s[i] != '\t' && s[i] != '\r' && 
-        s[i] != '\v' && s[i] != '"')
+	while (s[i] != '\0' && n_mas < count)
+	{
+		if (s[i] != c && s[i] != '\t' && s[i] != '\r' &&
+		s[i] != '\v' && s[i] != '"')
 		{
 			start = i;
 			while (s[i] != '\0' && s[i] != c && s[i] != '"')
 				i++;
 			sub = ft_strsub(s, start + 1, env_strlen(&s[start + 1]));
-			if (s[start] == '~')
-				str[n_mas] = ft_strjoin(getenv("HOME"), &s[start] + 1);
-			else if (s[start] == '$' && env_strlen(&s[start]) == 1)
-				str[n_mas] = ft_strdup("$");
-			else if (s[start] == '$' && (val = getenv_cmnd(sub)))
-				str[n_mas] = ft_strdup(val);
-			else if (s[start] == '$' && !val)
-				str[n_mas] = ft_strdup(" ");
-			else
-			{
-				free(sub);
-				sub = ft_strsub(s, start, i - start);
-				str[n_mas] = ft_strdup(sub);
-			}
+			str[n_mas] = nsplit(s, start, i, sub);
 			free(sub);
 			n_mas++;
 		}
@@ -52,7 +74,7 @@ char    **split(char **str, char *s, char c, int count)
 	return (str);
 }
 
-int	    count_words(char *str, char sign)
+int		count_words(char *str, char sign)
 {
 	int i;
 	int i_of_word;
@@ -75,7 +97,7 @@ int	    count_words(char *str, char sign)
 	return (count);
 }
 
-char    **split_cmnd(char const *s, char c)
+char	**split_cmnd(char const *s, char c)
 {
 	char **str;
 	char count;
