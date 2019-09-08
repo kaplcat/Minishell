@@ -58,7 +58,7 @@ int		exit_cmnd(void);
 int		check_builtin(char *cmnd);
 int		builtin(char **args);
 void	launch_cd(char *path);
-void	check_cd(int argc, char **args);
+//void	check_cd(int argc, char **args);
 int		cd_cmnd(char **args, int argc);
 int		echo_cmnd(char **args);
 char	*check_error_code(int error_code);
@@ -103,5 +103,6 @@ int		execute_cmnd(char **cmnd);
 int		exe_multcmnds(char *line);
 int		exe_cmnds(char *line);
 int		execution(char *line);
+void	check_cd(int argc, char **args, int cwderr);
 
 #endif

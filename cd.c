@@ -24,8 +24,8 @@ void	launch_cd(char *path)
 			perror_cmnd("minishell", NULL, STATERR);
 		else if (!S_ISDIR(s.st_mode))
 			perror_cmnd("cd", path, NOTDIR);
-		else if (access(path, R_OK))
-			perror_cmnd("minishell", path, 0);
+		else if (access(path, R_OK) || access(path, X_OK))
+			perror_cmnd("minishell", path, PMDND);
 		else
 		{
 			if (chdir(path) == -1)
@@ -43,11 +43,11 @@ char	*get_true_path(int argc, char **args)
 	return (args[1]);
 }
 
-void	check_cd(int argc, char **args)
+void	check_cd(int argc, char **args, int cwderr)
 {
 	char *path;
 
-	if (argc == 1 || !ft_strcmp(args[1], "--") || !ft_strcmp(args[1], "~"))
+	if (argc == 1 || !ft_strcmp(args[1], "--") || !ft_strcmp(args[1], "~") || cwderr)
 	{
 		if (!(path = getenv_cmnd("HOME")))
 			return ;
@@ -69,20 +69,34 @@ int		cd_cmnd(char **args, int argc)
 {
 	char dir_path[MAXDIR];
 	char *pwd_path;
+	int cwderr;
 
+	cwderr = 0;
 	if (argc == 3)
 	{
 		if (!ft_strcmp(args[1], " "))
-			check_cd(argc, args);
+			check_cd(argc, args, cwderr);
 		else
 			perror_cmnd("cd", args[1], NOTINPWD);
 	}
 	else if (argc > 3)
 		perror_cmnd("cd", NULL, MNARGS);
 	else
-		check_cd(argc, args);
-	if (!(getcwd(dir_path, MAXDIR)))
-		perror_cmnd("cd", args[1], GETCWDERR);
+    {
+        if (!(getcwd(dir_path, MAXDIR)))
+        {
+            perror_cmnd("cd", args[1], GETCWDERR);
+            cwderr = 1;
+//            return (1);
+        }
+        check_cd(argc, args, cwderr);
+    }
+//		check_cd(argc, args);
+//	if (!(getcwd(dir_path, MAXDIR)))
+//    {
+//        perror_cmnd("cd", args[1], GETCWDERR);
+//
+//    }
 	if ((pwd_path = getenv_cmnd("PWD")))
 	{
 		setenv_cmnd("OLDPWD", pwd_path);

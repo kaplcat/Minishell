@@ -25,7 +25,7 @@ char	*check_error_code_dope(int error_code)
 	if (error_code == 13)
 		return (": no such file or directory: ");
 	if (error_code == 14)
-		return (": Permission denied: ");
+		return (": permission denied: ");
 	return (NULL);
 }
 
@@ -36,7 +36,7 @@ char	*check_error_code(int error_code)
 	if (error_code == 2)
 		return (": too many arguments");
 	if (error_code == 3)
-		return (": \e[91mgwtcwd() error\e[39m");
+		return (": \e[91mgetcwd() error:\e[39m ");
 	if (error_code == 5)
 		return (": \e[91mstat() error\e[39m");
 	if (error_code == 4)

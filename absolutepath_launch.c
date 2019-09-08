@@ -20,7 +20,9 @@ int		launch(char *file, char **args, int absolute)
 	pid = fork();
 	if (pid == 0)
 	{
-		if (execve(file, args, g_env) == -1)
+	    if (execve(file, args, g_env) == -1 && !access(file, X_OK))
+            perror_cmnd("minishell", file, PMDND);
+		else if (execve(file, args, g_env) == -1)
 			perror_cmnd("minishell", NULL, EXECVEERR);
 		if (!absolute)
 			free(file);
