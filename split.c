@@ -29,7 +29,7 @@ char	*nsplit(char *s, int start, int i, char *sub)
 	char *str;
 
 	if (s[start] == '~')
-		return (ft_strjoin(getenv("HOME"), &s[start] + 1));
+		return (ft_strjoin(getenv_cmnd("HOME"), &s[start] + 1));
 	else if (s[start] == '$' && env_strlen(&s[start]) == 1)
 		return (ft_strdup("$"));
 	else if (s[start] == '$' && (val = getenv_cmnd(sub)))

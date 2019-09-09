@@ -6,7 +6,7 @@
 /*   By: bellyn-t <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 21:10:26 by bellyn-t          #+#    #+#             */
-/*   Updated: 2019/09/08 16:10:35 by bellyn-t         ###   ########.fr       */
+/*   Updated: 2019/09/08 19:21:01 by bellyn-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@ int		launch(char *file, char **args, int absolute)
 	pid = fork();
 	if (pid == 0)
 	{
-		if (execve(file, args, g_env) == -1 && !access(file, X_OK))
+		if (execve(file, args, g_env) == -1 && (access(file, F_OK)
+		&& !access(file, X_OK)))
 			perror_cmnd("minishell", file, PMDND);
-		else if (execve(file, args, g_env) == -1)
-			perror_cmnd("minishell", NULL, EXECVEERR);
 		if (!absolute)
 			free(file);
 		exit(EXIT_FAILURE);
@@ -43,6 +42,18 @@ int		launch(char *file, char **args, int absolute)
 
 int		absolute_path_launch(char **cmnd)
 {
+	struct stat s;
+
+	if (!ft_strcmp(cmnd[0], "/") || !ft_strcmp(cmnd[0], "./")
+	|| !ft_strcmp(cmnd[0], "."))
+		return (1);
+	if (stat(cmnd[0], &s) == -1)
+		perror_cmnd("minishell", NULL, LSTATERR);
+	if (S_ISDIR(s.st_mode))
+	{
+		perror_cmnd("minishell", cmnd[0], CMNDNTFND);
+		return (1);
+	}
 	if (access(cmnd[0], X_OK))
 	{
 		if (access(cmnd[0], F_OK) == -1)

@@ -24,7 +24,7 @@ void	launch_cd(char *path)
 			perror_cmnd("minishell", NULL, STATERR);
 		else if (!S_ISDIR(s.st_mode))
 			perror_cmnd("cd", path, NOTDIR);
-		else if (access(path, R_OK) || access(path, X_OK))
+		else if (access(path, X_OK))
 			perror_cmnd("minishell", path, PMDND);
 		else
 		{
@@ -47,8 +47,7 @@ void	check_cd(int argc, char **args, int cwderr)
 {
 	char *path;
 
-	if (argc == 1 || !ft_strcmp(args[1], "--") ||
-		!ft_strcmp(args[1], "~") || cwderr)
+	if (argc == 1 || !ft_strcmp(args[1], "--") || cwderr)
 	{
 		if (!(path = getenv_cmnd("HOME")))
 			return ;

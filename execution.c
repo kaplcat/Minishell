@@ -69,7 +69,7 @@ int		execution(char *line)
 {
 	int status;
 
-	if ((strrchr(line, ';')))
+	if ((ft_strrchr(line, ';')))
 		status = exe_multcmnds(line);
 	else
 		status = exe_cmnds(line);
