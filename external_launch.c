@@ -6,7 +6,7 @@
 /*   By: bellyn-t <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 21:13:11 by bellyn-t          #+#    #+#             */
-/*   Updated: 2019/09/07 21:13:14 by bellyn-t         ###   ########.fr       */
+/*   Updated: 2019/09/12 14:24:53 by bellyn-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,24 @@ char		*check_extern_command(char **cmnd, int i)
 
 int			external_launch(char **cmnd, char *paths)
 {
-	char *filepath;
+	char		*filepath;
+	struct stat s;
 
-	if (!access(cmnd[0], R_OK))
-	{
-		perror_cmnd("minishell", cmnd[0], 0);
-		return (1);
-	}
 	filepath = path(cmnd[0], paths);
 	free(paths);
+	if (stat(filepath, &s) == -1)
+		perror_cmnd("minishell", NULL, STATERR);
+	if (S_ISDIR(s.st_mode))
+	{
+		perror_cmnd("minishell", cmnd[0], CMNDNTFND);
+		free(filepath);
+		return (1);
+	}
+	if (access(filepath, X_OK))
+	{
+		perror_cmnd("minishell", cmnd[0], CMNDNTFND);
+		free(filepath);
+		return (1);
+	}
 	return (launch(filepath, cmnd, 0));
 }

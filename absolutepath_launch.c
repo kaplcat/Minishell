@@ -48,7 +48,7 @@ int		absolute_path_launch(char **cmnd)
 	|| !ft_strcmp(cmnd[0], "."))
 		return (1);
 	if (stat(cmnd[0], &s) == -1)
-		perror_cmnd("minishell", NULL, LSTATERR);
+		perror_cmnd("minishell", NULL, STATERR);
 	if (S_ISDIR(s.st_mode))
 	{
 		perror_cmnd("minishell", cmnd[0], CMNDNTFND);
